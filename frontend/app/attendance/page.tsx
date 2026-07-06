@@ -4,7 +4,8 @@ import AttendancePageClient from "@/components/attendance/AttendancePageClient";
 import { getAttendance } from "@/services/attendance";
 
 export default async function AttendancePage() {
-  const attendance = await getAttendance();
+  let attendance = [];
+  try { attendance = await getAttendance(); } catch {}
 
   return (
     <div className="flex min-h-screen bg-slate-100">

@@ -4,7 +4,8 @@ import StudentsPageClient from "@/components/students/StudentsPageClient";
 import { getStudents } from "@/services/student";
 
 export default async function StudentsPage() {
-  const students = await getStudents();
+  let students = [];
+  try { students = await getStudents(); } catch {}
 
   return (
     <div className="flex min-h-screen bg-slate-100">

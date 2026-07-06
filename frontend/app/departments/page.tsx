@@ -4,7 +4,8 @@ import DepartmentPageClient from "@/components/departments/DepartmentPageClient"
 import { getDepartments } from "@/services/department";
 
 export default async function DepartmentsPage() {
-  const departments = await getDepartments();
+  let departments = [];
+  try { departments = await getDepartments(); } catch {}
 
   return (
     <div className="flex min-h-screen bg-slate-100">

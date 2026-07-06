@@ -4,7 +4,8 @@ import FacultyPageClient from "@/components/faculty/FacultyPageClient";
 import { getFaculty } from "@/services/faculty";
 
 export default async function FacultyPage() {
-  const faculty = await getFaculty();
+  let faculty = [];
+  try { faculty = await getFaculty(); } catch {}
 
   return (
     <div className="flex min-h-screen bg-slate-100">

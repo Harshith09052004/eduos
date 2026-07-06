@@ -4,7 +4,9 @@ import PlacementPageClient from "@/components/placements/PlacementPageClient";
 import { getPlacements } from "@/services/placement";
 
 export default async function PlacementsPage() {
-  const placements = await getPlacements();
+  let placements = [];
+  try { placements = await getPlacements(); } catch {}<｜｜DSML｜｜parameter>
+
 
   return (
     <div className="flex min-h-screen bg-slate-100">
