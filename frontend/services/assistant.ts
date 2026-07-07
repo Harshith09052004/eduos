@@ -1,13 +1,11 @@
+import Cookies from "js-cookie";
 import api from "./api";
 
 export async function sendChatMessage(
   prompt: string,
   conversationId?: number
 ): Promise<Response> {
-  const token = document.cookie
-    .split("; ")
-    .find((row) => row.startsWith("access="))
-    ?.split("=")[1];
+  const token = Cookies.get("access");
 
   const base = process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:8000/api";
   const res = await fetch(`${base}/assistant/chat/`, {
@@ -37,7 +35,7 @@ export async function getConversationMessages(conversationId: number) {
 
 export async function deleteConversation(conversationId: number) {
   const res = await api.delete(
-    `/assistant/conversations/${conversationId}/delete/`
+    `/assistant/conversations/${conversationId}/`
   );
   return res.data;
 }

@@ -1,0 +1,48 @@
+#!/bin/bash
+echo ""
+echo "  EduOS Deployment — Vercel + Render"
+echo "  ================================="
+echo ""
+echo "  This script automates setup. You'll need:"
+echo "    1. A GitHub repo with this code pushed"
+echo "    2. A Vercel account (free) — vercel.com"
+echo "    3. A Render account (free) — render.com"  
+echo "    4. A Groq API key (free) — console.groq.com"
+echo ""
+
+read -p "Press Enter after you've created all accounts..."
+
+echo ""
+echo "=== Step 1: Render (Backend API) ==="
+echo "  1. Go to dashboard.render.com → New → Blueprint"
+echo "  2. Connect your GitHub repo"
+echo "  3. Set root directory: backend"
+echo "  4. Render auto-detects render.yaml"
+echo "  5. Set env var: OPENAI_API_KEY = your_groq_api_key"
+echo "  6. Deploy → Copy the .onrender.com URL"
+echo ""
+
+read -p "Paste your Render URL (e.g. https://eduos-api.onrender.com): " RENDER_URL
+
+echo ""
+echo "=== Step 2: Vercel (Frontend) ==="
+echo "  1. Go to vercel.com → Add New Project"
+echo "  2. Import your GitHub repo"
+echo "  3. Root Directory: frontend"
+echo "  4. Framework: Next.js"
+echo "  5. Environment Variable:"
+echo "     NEXT_PUBLIC_API_URL = $RENDER_URL/api"
+echo "  6. Deploy"
+echo ""
+
+echo "=== Step 3: Seed Data ==="
+echo "  After both deploy, run this via Render Shell:"
+echo "  python manage.py migrate"
+echo "  python manage.py seed_data"
+echo ""
+
+echo "  Login credentials:"
+echo "    Admin:  admin@eduos.com / admin123"
+echo "    Faculty: FAC001 / faculty123"
+echo "    Student: 2024CS001 / student123"
+echo ""

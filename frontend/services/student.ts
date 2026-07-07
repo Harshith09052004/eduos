@@ -16,5 +16,6 @@ export async function updateStudent(id: number, data: any) {
 }
 
 export async function deleteStudent(id: number) {
-  return api.delete(`/students/${id}/`);
+  const response = await api.delete(`/students/${id}/`);
+  return response.data;
 }

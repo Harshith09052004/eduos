@@ -16,5 +16,6 @@ export async function updateAttendance(id: number, data: any) {
 }
 
 export async function deleteAttendance(id: number) {
-  await api.delete(`/attendance/${id}/`);
+  const response = await api.delete(`/attendance/${id}/`);
+  return response.data;
 }

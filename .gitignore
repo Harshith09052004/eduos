@@ -6,6 +6,7 @@ __pycache__/
 *.egg-info/
 dist/
 *.sqlite3
+staticfiles/
 
 # Node
 node_modules/

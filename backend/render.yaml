@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: eduos-api
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn config.wsgi --bind 0.0.0.0:$PORT --workers 2 --timeout 120
+    envVars:
+      - key: DJANGO_SECRET_KEY
+        generateValue: true
+      - key: DJANGO_DEBUG
+        value: "False"
+      - key: DJANGO_ALLOWED_HOSTS
+        value: ".onrender.com,localhost"
+      - key: DB_ENGINE
+        value: django.db.backends.postgresql
+      - key: DB_NAME
+        fromDatabase:
+          name: eduos-db
+          property: database
+      - key: DB_USER
+        fromDatabase:
+          name: eduos-db
+          property: user
+      - key: DB_PASSWORD
+        fromDatabase:
+          name: eduos-db
+          property: password
+      - key: DB_HOST
+        fromDatabase:
+          name: eduos-db
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: eduos-db
+          property: port
+      - key: CORS_ALLOWED_ORIGINS
+        value: "https://*.vercel.app,http://localhost:3000"
+      - key: AI_PROVIDER
+        value: "openai"
+      - key: AI_MODEL
+        value: "llama3-8b-8192"
+      - key: OPENAI_BASE_URL
+        value: "https://api.groq.com/openai/v1"
+      - key: OPENAI_API_KEY
+        sync: false
+
+databases:
+  - name: eduos-db
+    databaseName: eduos
+    user: eduos

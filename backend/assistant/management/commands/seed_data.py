@@ -48,13 +48,60 @@ class Command(BaseCommand):
             dept_objs[d["code"]] = obj
             self.stdout.write(f"  Department: {d['name']}")
 
-        admin, _ = User.objects.get_or_create(
+        admin, created = User.objects.get_or_create(
             email="admin@eduos.com",
-            defaults={"is_superuser": True, "is_staff": True},
+            defaults={"is_superuser": True, "is_staff": True, "role": "SUPER_ADMIN"},
         )
+        if not created:
+            admin.role = "SUPER_ADMIN"
+            admin.is_superuser = True
+            admin.is_staff = True
+            admin.save()
         admin.set_password("admin123")
         admin.save()
-        self.stdout.write("  Admin user: admin@eduos.com / admin123")
+        self.stdout.write("  Admin user: admin@eduos.com / admin123 (SUPER_ADMIN)")
+
+        faculty_user, created = User.objects.get_or_create(
+            email="faculty@eduos.com",
+            defaults={"role": "FACULTY"},
+        )
+        if not created:
+            faculty_user.role = "FACULTY"
+            faculty_user.save()
+        faculty_user.set_password("faculty123")
+        faculty_user.save()
+        self.stdout.write("  Faculty user: faculty@eduos.com / faculty123")
+
+        student_user, created = User.objects.get_or_create(
+            email="student@eduos.com",
+            defaults={"role": "STUDENT"},
+        )
+        if not created:
+            student_user.role = "STUDENT"
+            student_user.save()
+        student_user.set_password("student123")
+        student_user.save()
+        self.stdout.write("  Student user: student@eduos.com / student123")
+
+        # Create User accounts for existing students using roll_no as login
+        student_user_count = 0
+        for s in Student.objects.filter(user__isnull=True):
+            login_email = f"{s.roll_no.lower()}@eduos.com"
+            user, created = User.objects.get_or_create(
+                email=login_email,
+                defaults={"role": "STUDENT"},
+            )
+            if created:
+                user.set_password("student123")
+                user.save()
+                student_user_count += 1
+            elif user.role != "STUDENT":
+                user.role = "STUDENT"
+                user.save()
+            s.user = user
+            s.save(update_fields=["user"])
+        if student_user_count:
+            self.stdout.write(f"  Linked {student_user_count} student User accounts")
 
         student_ids = []
         for i in range(40):
@@ -113,6 +160,26 @@ class Command(BaseCommand):
                 },
             )
         self.stdout.write("  Faculty: 20 created")
+
+        # Create User accounts for existing faculty using employee_id as login
+        faculty_user_count = 0
+        for f in Faculty.objects.filter(user__isnull=True):
+            login_email = f"{f.employee_id.lower()}@eduos.com"
+            user, created = User.objects.get_or_create(
+                email=login_email,
+                defaults={"role": "FACULTY"},
+            )
+            if created:
+                user.set_password("faculty123")
+                user.save()
+                faculty_user_count += 1
+            elif user.role != "FACULTY":
+                user.role = "FACULTY"
+                user.save()
+            f.user = user
+            f.save(update_fields=["user"])
+        if faculty_user_count:
+            self.stdout.write(f"  Linked {faculty_user_count} faculty User accounts")
 
         students_list = list(Student.objects.all())
         for i in range(15):

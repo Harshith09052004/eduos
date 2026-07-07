@@ -25,8 +25,6 @@ const emptyForm = {
   name: "",
   code: "",
   hod: "",
-  total_students: 0,
-  total_faculty: 0,
 };
 
 export default function AddDepartmentModal({
@@ -39,17 +37,9 @@ export default function AddDepartmentModal({
   useEffect(() => {
     if (!open) return;
 
-    if (department) {
-      setForm({
-        name: department.name ?? "",
-        code: department.code ?? "",
-        hod: department.hod ?? "",
-        total_students: department.total_students ?? 0,
-        total_faculty: department.total_faculty ?? 0,
-      });
-    } else {
-      setForm(emptyForm);
-    }
+    setForm(department
+      ? { name: department.name ?? "", code: department.code ?? "", hod: department.hod ?? "" }
+      : emptyForm);
   }, [department, open]);
 
   if (!open) return null;
@@ -59,14 +49,7 @@ export default function AddDepartmentModal({
   ) => {
     const { name, value } = e.target;
 
-    setForm((prev) => ({
-      ...prev,
-      [name]:
-        name === "total_students" ||
-        name === "total_faculty"
-          ? Number(value)
-          : value,
-    }));
+    setForm((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async () => {
@@ -123,24 +106,6 @@ export default function AddDepartmentModal({
             name="hod"
             placeholder="Head of Department"
             value={form.hod}
-            onChange={handleChange}
-            className="rounded border p-3"
-          />
-
-          <input
-            type="number"
-            name="total_students"
-            placeholder="Total Students"
-            value={form.total_students}
-            onChange={handleChange}
-            className="rounded border p-3"
-          />
-
-          <input
-            type="number"
-            name="total_faculty"
-            placeholder="Total Faculty"
-            value={form.total_faculty}
             onChange={handleChange}
             className="rounded border p-3"
           />

@@ -1,11 +1,11 @@
 "use client";
 
 const prompts = [
-  "Show me students below 75% attendance",
-  "What are the placement statistics?",
-  "How many faculty members do we have?",
-  "Give me a summary of all departments",
-  "List all students with their details",
+  "Which students are at risk of failing this semester?",
+  "Predict which departments need improvement in placements",
+  "Show me attendance trends and recommend actions",
+  "Compare department performance with AI insights",
+  "Give me a complete school health analysis",
 ];
 
 interface Props {
