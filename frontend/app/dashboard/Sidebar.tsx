@@ -9,8 +9,8 @@ const menu = [
   { name: "Departments", href: "/departments" },
   { name: "Attendance", href: "/attendance" },
   { name: "Placements", href: "/placements" },
-  { name: "AI Assistant", href: "/assistant" },
-  { name: "Settings", href: "/settings" },
+  { name: "Analytics", href: "/analytics" },
+  { name: "AI Assistant", href: "/ai" },
 ];
 
 export default function Sidebar() {

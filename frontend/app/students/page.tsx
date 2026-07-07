@@ -5,7 +5,7 @@ import { getStudents } from "@/services/student";
 
 export default async function StudentsPage() {
   let students = [];
-  try { students = await getStudents(); } catch {}
+  try { students = await getStudents(); } catch (_) {}
 
   return (
     <div className="flex min-h-screen bg-slate-100">

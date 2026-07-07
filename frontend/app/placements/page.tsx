@@ -5,7 +5,7 @@ import { getPlacements } from "@/services/placement";
 
 export default async function PlacementsPage() {
   let placements = [];
-  try { placements = await getPlacements(); } catch {}<｜｜DSML｜｜parameter>
+  try { placements = await getPlacements(); } catch (_) {}
 
 
   return (

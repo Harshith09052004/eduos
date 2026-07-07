@@ -1,21 +1,15 @@
 import Sidebar from "../dashboard/Sidebar";
 import Header from "../dashboard/Header";
-import FacultyPageClient from "@/components/faculty/FacultyPageClient";
-import { getFaculty } from "@/services/faculty";
+import AnalyticsDashboard from "@/components/analytics/AnalyticsDashboard";
 
-export default async function FacultyPage() {
-  let faculty = [];
-  try { faculty = await getFaculty(); } catch (_) {}
-
+export default function AnalyticsPage() {
   return (
     <div className="flex min-h-screen bg-slate-100">
       <Sidebar />
-
       <div className="flex flex-1 flex-col">
         <Header />
-
         <main className="flex-1 p-8">
-          <FacultyPageClient faculty={faculty} />
+          <AnalyticsDashboard />
         </main>
       </div>
     </div>

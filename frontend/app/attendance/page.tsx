@@ -5,7 +5,7 @@ import { getAttendance } from "@/services/attendance";
 
 export default async function AttendancePage() {
   let attendance = [];
-  try { attendance = await getAttendance(); } catch {}
+  try { attendance = await getAttendance(); } catch (_) {}
 
   return (
     <div className="flex min-h-screen bg-slate-100">

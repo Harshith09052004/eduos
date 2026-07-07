@@ -5,7 +5,7 @@ import { getDepartments } from "@/services/department";
 
 export default async function DepartmentsPage() {
   let departments = [];
-  try { departments = await getDepartments(); } catch {}
+  try { departments = await getDepartments(); } catch (_) {}
 
   return (
     <div className="flex min-h-screen bg-slate-100">

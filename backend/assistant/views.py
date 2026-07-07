@@ -39,9 +39,10 @@ class ChatStreamView(APIView):
 
         context = ContextBuilder().build(prompt)
 
-        history = list(
-            conversation.messages.values("role", "content")[:-1]
+        all_messages = list(
+            conversation.messages.values("role", "content")
         )
+        history = all_messages[:-1]
 
         ai_service = AIService()
 
