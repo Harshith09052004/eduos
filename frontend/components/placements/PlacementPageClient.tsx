@@ -7,11 +7,12 @@ import { deletePlacement } from "@/services/placement";
 
 type Placement = {
   id: number;
-  company_name: string;
+  company: string;
   role: string;
   package: number;
-  placement_type: string;
-  drive_date: string;
+  placement_date: string;
+  student_name?: string;
+  roll_no?: string;
 };
 
 interface Props {
@@ -33,8 +34,8 @@ export default function PlacementPageClient({
 
     return placements.filter((placement) => {
       return (
-        placement.company_name.toLowerCase().includes(value) ||
-        placement.role.toLowerCase().includes(value)
+        (placement.company || "").toLowerCase().includes(value) ||
+        (placement.role || "").toLowerCase().includes(value)
       );
     });
   }, [placements, search]);

@@ -1,18 +1,16 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  createPlacement,
-  updatePlacement,
-} from "@/services/placement";
+import { createPlacement, updatePlacement } from "@/services/placement";
 
 type Placement = {
   id: number;
-  company_name: string;
+  company: string;
   role: string;
   package: number;
-  placement_type: string;
-  drive_date: string;
+  placement_date: string;
+  student_name?: string;
+  roll_no?: string;
 };
 
 interface Props {
@@ -21,30 +19,23 @@ interface Props {
   placement: Placement | null;
 }
 
-export default function AddPlacementModal({
-  open,
-  onClose,
-  placement,
-}: Props) {
-  const [company_name, setCompanyName] = useState("");
+export default function AddPlacementModal({ open, onClose, placement }: Props) {
+  const [company, setCompany] = useState("");
   const [role, setRole] = useState("");
   const [packageValue, setPackageValue] = useState("");
-  const [placement_type, setPlacementType] = useState("");
-  const [drive_date, setDriveDate] = useState("");
+  const [placementDate, setPlacementDate] = useState("");
 
   useEffect(() => {
     if (placement) {
-      setCompanyName(placement.company_name ?? "");
+      setCompany(placement.company ?? "");
       setRole(placement.role ?? "");
       setPackageValue(String(placement.package ?? ""));
-      setPlacementType(placement.placement_type ?? "");
-      setDriveDate(placement.drive_date ?? "");
+      setPlacementDate(placement.placement_date ?? "");
     } else {
-      setCompanyName("");
+      setCompany("");
       setRole("");
       setPackageValue("");
-      setPlacementType("");
-      setDriveDate("");
+      setPlacementDate("");
     }
   }, [placement, open]);
 
@@ -53,11 +44,10 @@ export default function AddPlacementModal({
   const handleSubmit = async () => {
     try {
       const data = {
-        company_name,
+        company,
         role,
         package: Number(packageValue),
-        placement_type,
-        drive_date,
+        placement_date: placementDate,
       };
 
       if (placement) {
@@ -83,15 +73,13 @@ export default function AddPlacementModal({
         </h2>
 
         <div className="space-y-4">
-
           <input
             type="text"
             placeholder="Company Name"
-            value={company_name}
-            onChange={(e) => setCompanyName(e.target.value)}
+            value={company}
+            onChange={(e) => setCompany(e.target.value)}
             className="w-full rounded-lg border p-3"
           />
-
           <input
             type="text"
             placeholder="Role"
@@ -99,7 +87,6 @@ export default function AddPlacementModal({
             onChange={(e) => setRole(e.target.value)}
             className="w-full rounded-lg border p-3"
           />
-
           <input
             type="number"
             placeholder="Package (LPA)"
@@ -107,40 +94,24 @@ export default function AddPlacementModal({
             onChange={(e) => setPackageValue(e.target.value)}
             className="w-full rounded-lg border p-3"
           />
-
-          <input
-            type="text"
-            placeholder="Placement Type"
-            value={placement_type}
-            onChange={(e) => setPlacementType(e.target.value)}
-            className="w-full rounded-lg border p-3"
-          />
-
           <input
             type="date"
-            value={drive_date}
-            onChange={(e) => setDriveDate(e.target.value)}
+            value={placementDate}
+            onChange={(e) => setPlacementDate(e.target.value)}
             className="w-full rounded-lg border p-3"
           />
-
         </div>
 
         <div className="mt-6 flex justify-end gap-3">
-
-          <button
-            onClick={onClose}
-            className="rounded-lg bg-gray-300 px-5 py-2"
-          >
+          <button onClick={onClose} className="rounded-lg bg-gray-300 px-5 py-2">
             Cancel
           </button>
-
           <button
             onClick={handleSubmit}
             className="rounded-lg bg-blue-600 px-5 py-2 font-semibold text-white hover:bg-blue-700"
           >
-            {placement ? "Update Placement" : "Add Placement"}
+            {placement ? "Update" : "Add"}
           </button>
-
         </div>
       </div>
     </div>

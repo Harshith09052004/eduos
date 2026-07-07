@@ -1,10 +1,11 @@
 type Placement = {
   id: number;
-  company_name: string;
+  company: string;
   role: string;
   package: number;
-  placement_type: string;
-  drive_date: string;
+  placement_date: string;
+  student_name?: string;
+  roll_no?: string;
 };
 
 interface Props {
@@ -20,26 +21,10 @@ export default function PlacementRow({
 }: Props) {
   return (
     <tr className="border-b hover:bg-slate-50">
-      <td className="px-4 py-3 font-medium">
-        {placement.company_name}
-      </td>
-
-      <td className="px-4 py-3">
-        {placement.role}
-      </td>
-
-      <td className="px-4 py-3">
-        ₹ {placement.package} LPA
-      </td>
-
-      <td className="px-4 py-3">
-        {placement.placement_type}
-      </td>
-
-      <td className="px-4 py-3">
-        {placement.drive_date}
-      </td>
-
+      <td className="px-4 py-3 font-medium">{placement.company}</td>
+      <td className="px-4 py-3">{placement.role}</td>
+      <td className="px-4 py-3">₹ {placement.package} LPA</td>
+      <td className="px-4 py-3">{placement.placement_date}</td>
       <td className="px-4 py-3">
         <div className="flex gap-2">
           <button
@@ -48,7 +33,6 @@ export default function PlacementRow({
           >
             Edit
           </button>
-
           <button
             onClick={() => onDelete(placement.id)}
             className="rounded-lg bg-red-600 px-3 py-1 text-sm font-medium text-white hover:bg-red-700"

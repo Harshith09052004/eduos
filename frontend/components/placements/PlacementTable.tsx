@@ -2,11 +2,12 @@ import PlacementRow from "./PlacementRow";
 
 type Placement = {
   id: number;
-  company_name: string;
+  company: string;
   role: string;
   package: number;
-  placement_type: string;
-  drive_date: string;
+  placement_date: string;
+  student_name?: string;
+  roll_no?: string;
 };
 
 interface Props {
@@ -28,19 +29,14 @@ export default function PlacementTable({
             <th className="px-4 py-3 text-left">Company</th>
             <th className="px-4 py-3 text-left">Role</th>
             <th className="px-4 py-3 text-left">Package (LPA)</th>
-            <th className="px-4 py-3 text-left">Type</th>
-            <th className="px-4 py-3 text-left">Drive Date</th>
+            <th className="px-4 py-3 text-left">Date</th>
             <th className="px-4 py-3 text-left">Actions</th>
           </tr>
         </thead>
-
         <tbody>
           {placements.length === 0 ? (
             <tr>
-              <td
-                colSpan={6}
-                className="py-8 text-center text-slate-500"
-              >
+              <td colSpan={5} className="py-8 text-center text-slate-500">
                 No placements found.
               </td>
             </tr>
