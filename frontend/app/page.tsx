@@ -105,21 +105,21 @@ export default function Home() {
           </div>
           <div className="mt-12 mx-auto max-w-2xl">
             <div className="grid gap-6 sm:grid-cols-3">
-              <div className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md">
+              <a href="mailto:podduturiharshith47@gmail.com" className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md block">
                 <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">📧</div>
                 <h4 className="font-semibold text-slate-800">Email</h4>
-                <p className="mt-1 text-sm text-slate-500">contact@eduos.com</p>
-              </div>
-              <div className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md">
+                <p className="mt-1 text-sm text-slate-500">podduturiharshith47@gmail.com</p>
+              </a>
+              <a href="tel:+919154673116" className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md block">
                 <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-green-100 text-green-600">📞</div>
                 <h4 className="font-semibold text-slate-800">Phone</h4>
-                <p className="mt-1 text-sm text-slate-500">+1 (555) 123-4567</p>
-              </div>
-              <div className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md">
+                <p className="mt-1 text-sm text-slate-500">+91 9154673116</p>
+              </a>
+              <a href="https://github.com/Harshith09052004" target="_blank" rel="noopener noreferrer" className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md block">
                 <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100 text-purple-600">🌐</div>
                 <h4 className="font-semibold text-slate-800">GitHub</h4>
-                <p className="mt-1 text-sm text-slate-500">github.com/eduos</p>
-              </div>
+                <p className="mt-1 text-sm text-slate-500">Harshith09052004</p>
+              </a>
             </div>
           </div>
         </div>
