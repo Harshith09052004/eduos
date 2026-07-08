@@ -110,46 +110,25 @@ export default function Home() {
       <section id="features" className="bg-slate-50 py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-4 text-center">
-            <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">Why EduOS</span>
-            <h3 className="mt-2 text-3xl font-bold text-slate-800">Built Different</h3>
-            <p className="mt-2 text-slate-500">AI-native platform with features competitors charge thousands for.</p>
+            <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">Features</span>
+            <h3 className="mt-2 text-3xl font-bold text-slate-800">Key Highlights</h3>
+            <p className="mt-2 text-slate-500">What makes EduOS different.</p>
           </div>
-          <div className="mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
-            <table className="w-full text-left text-sm">
-              <thead>
-                <tr className="border-b bg-slate-50">
-                  <th className="p-4 font-semibold text-slate-800">Feature</th>
-                  <th className="p-4 font-semibold text-blue-600">EduOS</th>
-                  <th className="p-4 font-semibold text-slate-400">PowerSchool</th>
-                  <th className="p-4 font-semibold text-slate-400">Gradelink</th>
-                  <th className="p-4 font-semibold text-slate-400">Fedena</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-slate-100">
-                {[
-                  { feat: "AI Assistant", us: "✅ Built-in", ps: "❌", gl: "❌", fd: "❌" },
-                  { feat: "School Health Score", us: "✅ AI-powered", ps: "❌", gl: "❌", fd: "❌" },
-                  { feat: "Predictive Analytics", us: "✅ Yes", ps: "✅ Premium", gl: "❌", fd: "❌" },
-                  { feat: "At-Risk Detection", us: "✅ Yes", ps: "✅ Premium", gl: "❌", fd: "❌" },
-                  { feat: "Role-Based Dashboards", us: "✅ 4 roles", ps: "✅ Yes", gl: "✅ Yes", fd: "✅ Yes" },
-                  { feat: "Student Management", us: "✅ Yes", ps: "✅ Yes", gl: "✅ Yes", fd: "✅ Yes" },
-                  { feat: "Attendance Tracking", us: "✅ Yes", ps: "✅ Yes", gl: "✅ Yes", fd: "✅ Yes" },
-                  { feat: "Placement Management", us: "✅ Yes", ps: "✅ Yes", gl: "❌", fd: "✅ Yes" },
-                  { feat: "Email Campaigns", us: "✅ Yes", ps: "✅ Yes", gl: "✅ Yes", fd: "❌" },
-                  { feat: "Open Source", us: "✅ Yes", ps: "❌ Proprietary", gl: "❌", fd: "✅ Community" },
-                  { feat: "Self-Hosted", us: "✅ Yes", ps: "❌", gl: "❌", fd: "✅ Yes" },
-                  { feat: "Free Tier", us: "✅ Full features", ps: "❌", gl: "❌", fd: "✅ Limited" },
-                ].map((row) => (
-                  <tr key={row.feat} className="hover:bg-slate-50">
-                    <td className="p-4 font-medium text-slate-700">{row.feat}</td>
-                    <td className="p-4 text-green-600">{row.us}</td>
-                    <td className="p-4 text-slate-400">{row.ps}</td>
-                    <td className="p-4 text-slate-400">{row.gl}</td>
-                    <td className="p-4 text-slate-400">{row.fd}</td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {[
+              { icon: "🤖", title: "AI Assistant", desc: "Ask questions in plain English — the AI retrieves live data from your database and responds with insights, charts, and recommendations." },
+              { icon: "📡", title: "School Pulse", desc: "Real-time institutional health score based on attendance, academics, placements, and faculty metrics." },
+              { icon: "⚠️", title: "At-Risk Detection", desc: "Automatically identify students at risk of low performance or dropout with early warning indicators." },
+              { icon: "👤", title: "Role-Based Access", desc: "Four roles — Admin, Faculty, Student, Parent — each with tailored dashboards and permissions." },
+              { icon: "📊", title: "Predictive Analytics", desc: "Data-driven insights and trends across attendance, CGPA, placements, and department performance." },
+              { icon: "🔓", title: "Open Source", desc: "Fully open source. Self-host on your own server or deploy on Vercel + Render for free." },
+            ].map((f) => (
+              <div key={f.title} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition hover:shadow-md">
+                <span className="mb-3 inline-flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-lg">{f.icon}</span>
+                <h4 className="mb-1 font-bold text-slate-800">{f.title}</h4>
+                <p className="text-sm text-slate-500">{f.desc}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
