@@ -96,6 +96,35 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-4 text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">Contact</span>
+            <h3 className="mt-2 text-3xl font-bold text-slate-800">Get In Touch</h3>
+            <p className="mt-2 text-slate-500">Have questions or feedback? We&apos;d love to hear from you.</p>
+          </div>
+          <div className="mt-12 mx-auto max-w-2xl">
+            <div className="grid gap-6 sm:grid-cols-3">
+              <div className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md">
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-blue-100 text-blue-600">📧</div>
+                <h4 className="font-semibold text-slate-800">Email</h4>
+                <p className="mt-1 text-sm text-slate-500">contact@eduos.com</p>
+              </div>
+              <div className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md">
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-green-100 text-green-600">📞</div>
+                <h4 className="font-semibold text-slate-800">Phone</h4>
+                <p className="mt-1 text-sm text-slate-500">+1 (555) 123-4567</p>
+              </div>
+              <div className="rounded-2xl bg-white p-6 text-center shadow-sm transition hover:shadow-md">
+                <div className="mx-auto mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-purple-100 text-purple-600">🌐</div>
+                <h4 className="font-semibold text-slate-800">GitHub</h4>
+                <p className="mt-1 text-sm text-slate-500">github.com/eduos</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <footer className="border-t bg-slate-900 py-10 text-center text-sm text-slate-400">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-xs font-bold text-white">E</div>
