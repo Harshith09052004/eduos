@@ -22,7 +22,7 @@ export default function Home() {
             <h1 className="text-xl font-bold text-slate-800">EduOS</h1>
           </div>
           <div className="flex items-center gap-3">
-            <Link href="/school-pulse" className="text-sm font-medium text-slate-500 hover:text-blue-600">School Pulse</Link>
+            <Link href="/school-pulse-preview" className="text-sm font-medium text-slate-500 hover:text-blue-600">School Pulse</Link>
             <Link href="/login" className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Login</Link>
           </div>
         </div>
@@ -39,7 +39,7 @@ export default function Home() {
           </p>
           <div className="flex justify-center gap-4">
             <Link href="/login" className="rounded-xl bg-white px-8 py-3 font-semibold text-slate-900 shadow-lg transition hover:bg-blue-50">Get Started</Link>
-            <Link href="/school-pulse" className="rounded-xl border border-white/30 bg-white/10 px-8 py-3 font-semibold text-white backdrop-blur transition hover:bg-white/20">View School Pulse</Link>
+            <Link href="/school-pulse-preview" className="rounded-xl border border-white/30 bg-white/10 px-8 py-3 font-semibold text-white backdrop-blur transition hover:bg-white/20">View School Pulse</Link>
           </div>
         </div>
       </section>

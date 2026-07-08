@@ -10,6 +10,7 @@ const roleAccess: Record<string, string[]> = {
   "/placements": ["SUPER_ADMIN", "COLLEGE_ADMIN", "STUDENT"],
   "/ai": ["SUPER_ADMIN", "COLLEGE_ADMIN", "FACULTY", "STUDENT"],
   "/analytics": ["SUPER_ADMIN", "COLLEGE_ADMIN", "FACULTY"],
+  "/school-pulse": ["SUPER_ADMIN", "COLLEGE_ADMIN", "FACULTY"],
   "/email-campaigns": ["SUPER_ADMIN", "COLLEGE_ADMIN"],
 };
 
@@ -59,6 +60,7 @@ export const config = {
     "/placements/:path*",
     "/ai/:path*",
     "/analytics/:path*",
+    "/school-pulse/:path*",
     "/email-campaigns/:path*",
   ],
 };
