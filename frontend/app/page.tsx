@@ -64,10 +64,9 @@ export default function Home() {
           </div>
           <div className="mt-12 grid gap-6 md:grid-cols-2 lg:grid-cols-3">
             {sections.map((s) => (
-              <Link
+              <div
                 key={s.title}
-                href={s.href}
-                className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all ${s.border} hover:shadow-lg hover:-translate-y-0.5`}
+                className={`group relative overflow-hidden rounded-2xl border border-slate-200 bg-white p-6 shadow-sm transition-all ${s.border} hover:shadow-lg hover:-translate-y-0.5 cursor-default`}
               >
                 <div className={`absolute right-0 top-0 h-24 w-24 translate-x-8 -translate-y-8 rounded-full bg-gradient-to-br ${s.gradient} opacity-10 transition group-hover:opacity-20`} />
                 <div className="relative">
@@ -76,7 +75,7 @@ export default function Home() {
                   <h4 className="mb-1 text-lg font-bold text-slate-800">{s.title}</h4>
                   <p className="text-sm text-slate-500">{s.desc}</p>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
         </div>
