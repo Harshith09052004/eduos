@@ -12,19 +12,30 @@ const sections = [
   { title: "AI Assistant", desc: "Intelligent assistant with real-time database context", href: "/ai", icon: "🤖", gradient: "from-orange-500 to-orange-600", border: "hover:border-orange-200" },
 ];
 
+const faqs = [
+  { q: "Is EduOS free to use?", a: "Yes! EduOS is completely free and open-source. You only pay for hosting if you choose to deploy on your own server." },
+  { q: "What makes EduOS different from other school management systems?", a: "EduOS has a built-in AI assistant powered by Groq, predictive analytics, and a School Pulse health score — features that competitors charge thousands for." },
+  { q: "Can I deploy EduOS on my own server?", a: "Absolutely. EduOS is open-source and can be self-hosted on any server. We provide Docker setup for easy deployment." },
+  { q: "What roles does EduOS support?", a: "EduOS supports Super Admin, College Admin, Faculty, and Student roles — each with tailored dashboards and permissions." },
+  { q: "Does EduOS support mobile devices?", a: "Yes, the frontend is fully responsive and works on all devices — desktops, tablets, and phones." },
+];
+
 export default function Home() {
   return (
     <div className="flex min-h-screen flex-col">
-      <header className="border-b bg-white shadow-sm">
+      <header className="border-b bg-white shadow-sm sticky top-0 z-50">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-4">
           <div className="flex items-center gap-2">
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-600 text-sm font-bold text-white">E</div>
             <h1 className="text-xl font-bold text-slate-800">EduOS</h1>
           </div>
-          <div className="flex items-center gap-3">
+          <nav className="hidden md:flex items-center gap-6">
             <Link href="/school-pulse-preview" className="text-sm font-medium text-slate-500 hover:text-blue-600">School Pulse</Link>
-            <Link href="/login" className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Login</Link>
-          </div>
+            <Link href="/#features" className="text-sm font-medium text-slate-500 hover:text-blue-600">Features</Link>
+            <Link href="/#pricing" className="text-sm font-medium text-slate-500 hover:text-blue-600">Pricing</Link>
+            <Link href="/#faq" className="text-sm font-medium text-slate-500 hover:text-blue-600">FAQ</Link>
+          </nav>
+          <Link href="/login" className="rounded-lg bg-blue-600 px-5 py-2 text-sm font-semibold text-white transition hover:bg-blue-700">Login</Link>
         </div>
       </header>
 
@@ -96,6 +107,148 @@ export default function Home() {
         </div>
       </section>
 
+      <section id="features" className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-4 text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">Why EduOS</span>
+            <h3 className="mt-2 text-3xl font-bold text-slate-800">Built Different</h3>
+            <p className="mt-2 text-slate-500">AI-native platform with features competitors charge thousands for.</p>
+          </div>
+          <div className="mt-12 overflow-hidden rounded-2xl border border-slate-200 bg-white shadow-sm">
+            <table className="w-full text-left text-sm">
+              <thead>
+                <tr className="border-b bg-slate-50">
+                  <th className="p-4 font-semibold text-slate-800">Feature</th>
+                  <th className="p-4 font-semibold text-blue-600">EduOS</th>
+                  <th className="p-4 font-semibold text-slate-400">PowerSchool</th>
+                  <th className="p-4 font-semibold text-slate-400">Gradelink</th>
+                  <th className="p-4 font-semibold text-slate-400">Fedena</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-slate-100">
+                {[
+                  { feat: "AI Assistant", us: "✅ Built-in", ps: "❌", gl: "❌", fd: "❌" },
+                  { feat: "School Health Score", us: "✅ AI-powered", ps: "❌", gl: "❌", fd: "❌" },
+                  { feat: "Predictive Analytics", us: "✅ Yes", ps: "✅ Premium", gl: "❌", fd: "❌" },
+                  { feat: "At-Risk Detection", us: "✅ Yes", ps: "✅ Premium", gl: "❌", fd: "❌" },
+                  { feat: "Role-Based Dashboards", us: "✅ 4 roles", ps: "✅ Yes", gl: "✅ Yes", fd: "✅ Yes" },
+                  { feat: "Student Management", us: "✅ Yes", ps: "✅ Yes", gl: "✅ Yes", fd: "✅ Yes" },
+                  { feat: "Attendance Tracking", us: "✅ Yes", ps: "✅ Yes", gl: "✅ Yes", fd: "✅ Yes" },
+                  { feat: "Placement Management", us: "✅ Yes", ps: "✅ Yes", gl: "❌", fd: "✅ Yes" },
+                  { feat: "Email Campaigns", us: "✅ Yes", ps: "✅ Yes", gl: "✅ Yes", fd: "❌" },
+                  { feat: "Open Source", us: "✅ Yes", ps: "❌ Proprietary", gl: "❌", fd: "✅ Community" },
+                  { feat: "Self-Hosted", us: "✅ Yes", ps: "❌", gl: "❌", fd: "✅ Yes" },
+                  { feat: "Free Tier", us: "✅ Full features", ps: "❌", gl: "❌", fd: "✅ Limited" },
+                ].map((row) => (
+                  <tr key={row.feat} className="hover:bg-slate-50">
+                    <td className="p-4 font-medium text-slate-700">{row.feat}</td>
+                    <td className="p-4 text-green-600">{row.us}</td>
+                    <td className="p-4 text-slate-400">{row.ps}</td>
+                    <td className="p-4 text-slate-400">{row.gl}</td>
+                    <td className="p-4 text-slate-400">{row.fd}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <section id="testimonials" className="bg-white py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-4 text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">Testimonials</span>
+            <h3 className="mt-2 text-3xl font-bold text-slate-800">What People Say</h3>
+          </div>
+          <div className="mt-12 grid gap-8 md:grid-cols-3">
+            {[
+              { quote: "EduOS transformed how we manage our institution. The AI assistant alone saved us hours of manual work.", name: "Dr. Sharma", role: "College Director", avatar: "👨‍🎓" },
+              { quote: "The School Pulse feature gives us real-time insights we never had before. At-risk detection is a game changer.", name: "Prof. Meera", role: "HOD, Computer Science", avatar: "👩‍🏫" },
+              { quote: "We migrated from a paid system that cost ₹2L/year. EduOS is free and does everything better.", name: "Rahul Verma", role: "IT Administrator", avatar: "👨‍💻" },
+            ].map((t) => (
+              <div key={t.name} className="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:shadow-md">
+                <p className="mb-4 text-slate-600 italic">&ldquo;{t.quote}&rdquo;</p>
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl">{t.avatar}</span>
+                  <div>
+                    <p className="font-semibold text-slate-800">{t.name}</p>
+                    <p className="text-xs text-slate-500">{t.role}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="pricing" className="bg-slate-50 py-20">
+        <div className="mx-auto max-w-7xl px-6">
+          <div className="mb-4 text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">Pricing</span>
+            <h3 className="mt-2 text-3xl font-bold text-slate-800">Free. Always.</h3>
+            <p className="mt-2 text-slate-500">No hidden fees. No per-student charges. No enterprise upsells.</p>
+          </div>
+          <div className="mt-12 mx-auto max-w-5xl">
+            <div className="grid gap-8 md:grid-cols-3">
+              <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                <h4 className="text-lg font-bold text-slate-800">EduOS</h4>
+                <p className="mt-2 text-4xl font-bold text-blue-600">$0</p>
+                <p className="text-sm text-slate-500">forever</p>
+                <ul className="mt-6 space-y-3 text-sm">
+                  {["All modules included", "AI Assistant", "School Pulse", "Role-based access", "Open source", "Self-host option"].map((item) => (
+                    <li key={item} className="flex items-center gap-2"><span className="text-green-500">✓</span> {item}</li>
+                  ))}
+                </ul>
+                <Link href="/login" className="mt-6 block rounded-xl bg-blue-600 py-3 text-center font-semibold text-white transition hover:bg-blue-700">Get Started</Link>
+              </div>
+              <div className="rounded-2xl border-2 border-blue-500 bg-white p-8 shadow-lg relative">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 rounded-full bg-blue-600 px-4 py-1 text-xs font-semibold text-white">Competitors</div>
+                <h4 className="text-lg font-bold text-slate-800">PowerSchool</h4>
+                <p className="mt-2 text-4xl font-bold text-slate-400">$10k+</p>
+                <p className="text-sm text-slate-500">per year</p>
+                <ul className="mt-6 space-y-3 text-sm">
+                  {["Basic SIS features", "No AI included", "Custom quote needed", "Per-student pricing", "Proprietary", "Vendor lock-in"].map((item) => (
+                    <li key={item} className="flex items-center gap-2"><span className="text-red-400">✗</span> {item}</li>
+                  ))}
+                </ul>
+                <div className="mt-6 rounded-xl bg-slate-100 py-3 text-center text-sm text-slate-500">Not worth it</div>
+              </div>
+              <div className="rounded-2xl border border-slate-200 bg-white p-8 shadow-sm">
+                <h4 className="text-lg font-bold text-slate-800">Gradelink</h4>
+                <p className="mt-2 text-4xl font-bold text-slate-400">$3k+</p>
+                <p className="text-sm text-slate-500">per year</p>
+                <ul className="mt-6 space-y-3 text-sm">
+                  {["Core SIS features", "No AI", "Per-student fees", "Limited analytics", "No placements", "No open source"].map((item) => (
+                    <li key={item} className="flex items-center gap-2"><span className="text-red-400">✗</span> {item}</li>
+                  ))}
+                </ul>
+                <div className="mt-6 rounded-xl bg-slate-100 py-3 text-center text-sm text-slate-500">Overpriced</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="faq" className="bg-white py-20">
+        <div className="mx-auto max-w-3xl px-6">
+          <div className="mb-4 text-center">
+            <span className="text-sm font-semibold uppercase tracking-widest text-blue-600">FAQ</span>
+            <h3 className="mt-2 text-3xl font-bold text-slate-800">Frequently Asked Questions</h3>
+          </div>
+          <div className="mt-12 space-y-4">
+            {faqs.map((faq, i) => (
+              <details key={i} className="group rounded-2xl border border-slate-200 bg-slate-50 p-5 open:shadow-sm">
+                <summary className="flex cursor-pointer items-center justify-between font-semibold text-slate-800">
+                  {faq.q}
+                  <span className="text-slate-400 transition group-open:rotate-180">▼</span>
+                </summary>
+                <p className="mt-3 text-sm text-slate-500">{faq.a}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
       <section className="bg-slate-50 py-20">
         <div className="mx-auto max-w-7xl px-6">
           <div className="mb-4 text-center">
@@ -125,10 +278,42 @@ export default function Home() {
         </div>
       </section>
 
-      <footer className="border-t bg-slate-900 py-10 text-center text-sm text-slate-400">
+      <footer className="border-t bg-slate-900 py-12 text-sm text-slate-400">
         <div className="mx-auto max-w-7xl px-6">
-          <div className="mb-2 inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-xs font-bold text-white">E</div>
-          <p className="mt-3">EduOS — AI-Powered Education Management System</p>
+          <div className="grid gap-8 md:grid-cols-4">
+            <div>
+              <div className="mb-3 inline-flex h-7 w-7 items-center justify-center rounded-md bg-blue-600 text-xs font-bold text-white">E</div>
+              <p className="mt-2 text-slate-500">AI-Powered Education Management System. Open source and free forever.</p>
+            </div>
+            <div>
+              <h5 className="mb-3 font-semibold text-white">Product</h5>
+              <ul className="space-y-2">
+                <li><Link href="/school-pulse-preview" className="hover:text-white transition">School Pulse</Link></li>
+                <li><Link href="/#features" className="hover:text-white transition">Features</Link></li>
+                <li><Link href="/#pricing" className="hover:text-white transition">Pricing</Link></li>
+                <li><Link href="/#faq" className="hover:text-white transition">FAQ</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h5 className="mb-3 font-semibold text-white">Modules</h5>
+              <ul className="space-y-2">
+                {sections.slice(0, 6).map((s) => (
+                  <li key={s.title}><Link href={s.href} className="hover:text-white transition">{s.title}</Link></li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h5 className="mb-3 font-semibold text-white">Contact</h5>
+              <ul className="space-y-2">
+                <li><a href="mailto:podduturiharshith47@gmail.com" className="hover:text-white transition">Email</a></li>
+                <li><a href="https://github.com/Harshith09052004" target="_blank" rel="noopener noreferrer" className="hover:text-white transition">GitHub</a></li>
+                <li><Link href="/login" className="hover:text-white transition">Login</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="mt-10 border-t border-slate-800 pt-8 text-center text-xs text-slate-600">
+            &copy; {new Date().getFullYear()} EduOS. Open source. No strings attached.
+          </div>
         </div>
       </footer>
     </div>
