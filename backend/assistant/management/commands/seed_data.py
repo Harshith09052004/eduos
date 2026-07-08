@@ -83,26 +83,6 @@ class Command(BaseCommand):
         student_user.save()
         self.stdout.write("  Student user: student@eduos.com / student123")
 
-        # Create User accounts for existing students using roll_no as login
-        student_user_count = 0
-        for s in Student.objects.filter(user__isnull=True):
-            login_email = f"{s.roll_no.lower()}@eduos.com"
-            user, created = User.objects.get_or_create(
-                email=login_email,
-                defaults={"role": "STUDENT"},
-            )
-            if created:
-                user.set_password("student123")
-                user.save()
-                student_user_count += 1
-            elif user.role != "STUDENT":
-                user.role = "STUDENT"
-                user.save()
-            s.user = user
-            s.save(update_fields=["user"])
-        if student_user_count:
-            self.stdout.write(f"  Linked {student_user_count} student User accounts")
-
         student_ids = []
         for i in range(40):
             first = choice(first_names)
@@ -140,6 +120,25 @@ class Command(BaseCommand):
                 )
         self.stdout.write(f"  Students: {len(student_ids)} created")
 
+        student_user_count = 0
+        for s in Student.objects.filter(user__isnull=True):
+            login_email = f"{s.roll_no.lower()}@eduos.com"
+            user, created = User.objects.get_or_create(
+                email=login_email,
+                defaults={"role": "STUDENT"},
+            )
+            if created:
+                user.set_password("student123")
+                user.save()
+                student_user_count += 1
+            elif user.role != "STUDENT":
+                user.role = "STUDENT"
+                user.save()
+            s.user = user
+            s.save(update_fields=["user"])
+        if student_user_count:
+            self.stdout.write(f"  Linked {student_user_count} student User accounts")
+
         for i in range(20):
             first = choice(first_names)
             last = choice(last_names)
@@ -161,7 +160,6 @@ class Command(BaseCommand):
             )
         self.stdout.write("  Faculty: 20 created")
 
-        # Create User accounts for existing faculty using employee_id as login
         faculty_user_count = 0
         for f in Faculty.objects.filter(user__isnull=True):
             login_email = f"{f.employee_id.lower()}@eduos.com"
